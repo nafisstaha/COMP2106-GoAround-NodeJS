@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'GoAround' });
 });
 
+/* GET about page. */
+router.get('/about', (req, res) => {
+  res.render('about', { title: "About GoAround Website" })
+})
+
 module.exports = router;
