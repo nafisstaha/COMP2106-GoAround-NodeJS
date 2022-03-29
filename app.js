@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var index = require('./controller/index');
 var users = require('./controller/users');
+const landmarks = require('./controller/landmarks');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/landmarks', landmarks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
