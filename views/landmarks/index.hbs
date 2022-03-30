@@ -1,10 +1,12 @@
-<h1>{{title}}</h1>
-{{#each landmarks}}
-    <div class="card col-4">
-        <div class="card-body">
-            <h5 class="card-title">{{this.name}}</h5>
-            <p class="card-text">{{this.location}}</p>
-            <p class="card-text">{{this.description}}</p>
+<h1 class="m-4">{{title}}</h1>
+<section class="row">
+    {{#each landmarks}}
+        <div class="card col-3 m-2 mx-auto">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{this.name}}</h5>
+                <p class="card-text text-center">{{this.location}}</p>
+                <p class="card-text">{{this.description}}</p>
+            </div>
         </div>
-    </div>
-{{/each}}
+    {{/each}}
+</section>
