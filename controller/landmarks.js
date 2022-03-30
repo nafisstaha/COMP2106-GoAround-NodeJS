@@ -1,4 +1,5 @@
 var express = require('express');
+const req = require('express/lib/request')
 var router = express.Router();
 
 // import Landmark model for CRUD operations
@@ -18,5 +19,12 @@ router.get('/', (req, res) => {
             })
         }
     })})
+
+/* GET landmarks/create */
+router.get('/create', (req, res) => {
+    res.render('landmarks/create', {
+        title: 'Landmark Details'
+    })
+})
 
 module.exports = router;

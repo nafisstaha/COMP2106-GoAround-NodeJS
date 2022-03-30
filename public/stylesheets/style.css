@@ -10,3 +10,7 @@ a {
 main {
   margin-top: 25px;
 }
+
+fieldset {
+  margin: 10px;
+}

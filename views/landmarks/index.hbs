@@ -1,7 +1,8 @@
 <h1 class="m-4">{{title}}</h1>
+<a href="/landmarks/create" class="btn btn-outline-success">Add a New Landmark</a>
 <section class="row">
     {{#each landmarks}}
-        <div class="card col-3 m-2 mx-auto">
+        <div class="card col-4 m-2 mx-auto">
             <div class="card-body">
                 <h5 class="card-title text-center">{{this.name}}</h5>
                 <p class="card-text text-center">{{this.location}}</p>
