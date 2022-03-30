@@ -10,6 +10,15 @@ const landmarks = require('./controller/landmarks');
 
 var app = express();
 
+// mongoose db connection
+const mongoose = require('mongoose')
+mongoose.connect('mongodb+srv://nafiss:nafisstaha@cluster0.q9ywc.mongodb.net/Cluster0?retryWrites=true&w=majority', {
+}).then((res) => {
+  console.log('Connected to MongoDB')
+}).catch(() => {
+  console.log('MongoDB connection failed')
+})
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
