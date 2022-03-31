@@ -1,4 +1,4 @@
-<h1 class="m-4">{{title}}</h1>
+<h1 class="my-4">{{title}}</h1>
 <a href="/landmarks/create" class="btn btn-outline-success">Add a New Landmark</a>
 <section class="row">
     {{#each landmarks}}
@@ -7,6 +7,13 @@
                 <h5 class="card-title text-center">{{this.name}}</h5>
                 <p class="card-text text-center">{{this.location}}</p>
                 <p class="card-text">{{this.description}}</p>
+                <a class="btn btn-danger" href="/landmarks/delete/{{this._id}}" 
+                    onclick="return confirmDelete()">
+                    Delete
+                </a>
+                <a class="btn btn-light" href="/landmarks/edit/{{this._id}}">
+                    Edit
+                </a>                   
             </div>
         </div>
     {{/each}}

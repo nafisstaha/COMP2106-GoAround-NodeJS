@@ -1,16 +1,16 @@
-<h1 class="my-4">{{title}}</h1>
+<h1>{{title}}</h1>
 <form method="post">
     <fieldset>
         <label class="control-label col-2" for="name">Name: *</label>
-        <input name="name" id="name" required />
+        <input name="name" id="name" required value="{{landmark.name}}" />
     </fieldset>
     <fieldset>
         <label class="control-label col-2" for="location">Location: *</label>
-        <input name="location" id="location" required />
+        <input name="location" id="location" required value="{{landmark.location}}" />
     </fieldset>
     <fieldset>
         <label class="control-label col-2" for="description">Description: </label>
-        <textarea name="description" id="description"></textarea>
+        <textarea name="description" id="description">{{landmark.description}}</textarea>
     </fieldset>
     <button class="btn btn-success offset-2">Save</button>
 </form> 
