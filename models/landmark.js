@@ -8,6 +8,9 @@ let landmarkSchema = new mongoose.Schema({
         required: 'Name is required',
         trim: true
     },
+    image: {
+        type: String
+    },
     location: {
         type: String,
         required: 'Location is required',
