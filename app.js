@@ -7,6 +7,7 @@ var logger = require('morgan');
 var index = require('./controller/index');
 var users = require('./controller/users');
 const landmarks = require('./controller/landmarks');
+const auth = require('./controller/auth')
 
 var app = express();
 
@@ -14,6 +15,29 @@ var app = express();
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
+
+// passport config 
+const passport = require('passport')
+const session = require('express-session')
+
+// enable session
+app.use(session({
+  secret: 'could-hardcode-here-but-will-move-to-env',
+  resave: true,
+  saveUninitialized: false
+}))
+
+// passport initialization
+app.use(passport.initialize())
+app.use(passport.session())
+
+// use user.js in model and enable mongodb
+let User = require('./models/user')
+passport.use(User.createStrategy()) 
+
+// read and write user data
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // mongoose db connection
 const mongoose = require('mongoose')
@@ -37,6 +61,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/landmarks', landmarks);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
