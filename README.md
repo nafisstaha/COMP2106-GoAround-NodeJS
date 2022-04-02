@@ -1,4 +1,5 @@
 # COMP2106-GoAround
 <p>This website was created and written by Nafiseh Tahaei for COMP2106 - Adv Server-Side Scripting:MEAN class in Winter 2021. You can register on the site and after login, you can delete or change the landmarks on the Landmarks page. </p>
+<p>I used Validator and Formidable packages</p>
 <p><a href="https://github.com/nafisstaha/COMP2106-GoAround/">GoAround GitHub</a></p>
 <p><a href="https://comp2106-goaround.herokuapp.com/">Herokuapp Website</a></p>
