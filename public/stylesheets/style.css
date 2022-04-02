@@ -1,8 +1,15 @@
 body {
   font-family: 'Catamaran', sans-serif;
   font: 14px;
+  position: relative;
+
 }
 
+body::after {
+  content: '';
+  display: block;
+  height: 80px;
+}
 .navbar {
   font-family: 'Ubuntu', sans-serif;
 }
@@ -29,4 +36,5 @@ footer {
   bottom: 0;
   width: 100%;
   background-color: rgb(234, 250, 234);
+  height: 80px;
 }
