@@ -24,19 +24,20 @@ router.get('/', (req, res) => {
             console.log(err)
         }
         else {
-             res.render('landmarks/index', { 
+            res.render('landmarks/index', {
                 title: 'Landmarks',
                 landmarks: landmarks,
-                user: req.user    
+                user: req.user
             })
         }
-    })})
+    })
+})
 
 // GET /landmarks/create
 router.get('/create', isAuthenticated, (req, res) => {
     res.render('landmarks/create', {
         title: 'Landmark Details',
-        user: req.user    
+        user: req.user
     })
 })
 
@@ -66,6 +67,7 @@ router.get('/delete/:_id', isAuthenticated, (req, res) => {
 
 // GET /landmarks/edit/id => edit landmark with special id
 router.get('/edit/:_id', isAuthenticated, (req, res) => {
+
     Landmark.findById(req.params._id, (err, landmark) => {
         if (err) {
             console.log(err)
@@ -82,6 +84,7 @@ router.get('/edit/:_id', isAuthenticated, (req, res) => {
 
 // POST /landmarks/edit/id => update landmark with special id in mongodb
 router.post('/edit/:_id', isAuthenticated, (req, res) => {
+
     Landmark.findByIdAndUpdate({ _id: req.params._id }, req.body, null, (err, landmark) => {
         if (err) {
             console.log(err)
@@ -91,5 +94,31 @@ router.post('/edit/:_id', isAuthenticated, (req, res) => {
         }
     })
 })
+
+// upload image/file 
+const http = require('http');
+const formidable = require('formidable');
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/api/upload' && req.method.toLowerCase() === 'post') {
+    // parse a file upload
+    const form = formidable({ multiples: true });
+
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        res.writeHead(err.httpCode || 400, { 'Content-Type': 'text/plain' });
+        res.end(String(err));
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ fields, files }, null, 2));
+    });
+
+    return;
+  }
+    // show a file upload form
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.redirect('/landmarks')
+});
 
 module.exports = router;

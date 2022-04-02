@@ -4,30 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// uploading file/image with formidable package
-const http = require('http');
-const formidable = require('formidable');
-
-const server = http.createServer((req, res) => {
-  if (req.url === '/api/upload' && req.method.toLowerCase() === 'post') {
-    // parse a file upload
-    const form = formidable({ multiples: true });
-
-    form.parse(req, (err, fields, files) => {
-      if (err) {
-        res.writeHead(err.httpCode || 400, { 'Content-Type': 'text/plain' });
-        res.end(String(err));
-        return;
-      }
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ fields, files }, null, 2));
-    });
-
-    return;
-  }
-});
-
-
 var index = require('./controller/index');
 var users = require('./controller/users');
 const landmarks = require('./controller/landmarks');
